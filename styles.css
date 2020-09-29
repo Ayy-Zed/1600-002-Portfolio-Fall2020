@@ -3,14 +3,55 @@
     padding: 0;
 }
 
+html {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-size: 62.5%;
+}
+
 body {
     background-color: rgb(77, 77, 214);
 }
 
-nav {
-    background-color: red;
+#navbar {
+    display: flex;
+    justify-content: flex-end;
+    background-color: rgb(190, 68, 68);
 }
 
-.project-tile img{
+.nav-list {
+    display: flex;
+    list-style: none;
+    margin-right: 2rem;
+}
+
+.nav-list a {
+    display: block;
+    font-size: 2rem;
+    padding: 2rem;
+    color: #fff;
+    text-decoration: none;
+}
+
+.nav-list a:hover {
+    background: #45567d;
+}
+
+#welcome-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #000;
+    background-image: linear-gradient(54deg, #84bdf5 0%, #122241 100%);
+}
+
+figure img{
     width: 200px;
+}
+
+
+h1 {
+    font-size: 3rem;
 }
