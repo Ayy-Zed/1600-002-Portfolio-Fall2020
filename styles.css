@@ -19,6 +19,10 @@ body {
     background-color: rgb(77, 77, 214);
 }
 
+h1 {
+  color: white;
+}
+
 /* END */
 
 
@@ -30,7 +34,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: rgb(190, 68, 68);
+    background-color: rgb(198, 216, 38);
     box-shadow: 0 2px 0 rgba(0, 0, 0, 0.4);
     z-index: 10;
 }
@@ -64,7 +68,7 @@ body {
     justify-content: center;
     height: 100vh;
     background-color: #000;
-    background-image: linear-gradient(54deg, #84bdf5 0%, #122241 100%);
+    background-image: linear-gradient(54deg, #318ce7 0%, #db469d 100%);
 }
 /* END */
 
@@ -73,7 +77,7 @@ body {
 .projects-section {
     text-align: center;
     padding: 5rem 2rem;
-    background: #45567d;
+    background: #4163b3;
     height: 60vh;
   }
 
@@ -100,7 +104,7 @@ body {
     width: 100%;
     height: 80vh;
     padding: 0 2rem;
-    background: #303841;
+    background: #b44fa3;
   }
 
   .contact-links {
