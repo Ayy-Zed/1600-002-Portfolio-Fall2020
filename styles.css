@@ -143,3 +143,14 @@ h1 {
   }
   
   /* END */
+
+  @media screen and (max-width: 28.75em) {
+    .contact-links {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #welcome-section {
+      background-image: linear-gradient(270deg, #5db34b 0%, #e4a00c 100%);
+    }
+  }
