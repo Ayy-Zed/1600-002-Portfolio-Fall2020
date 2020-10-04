@@ -19,7 +19,7 @@ body {
     background-color: rgb(77, 77, 214);
 }
 
-h1 {
+h1, h2 {
   color: white;
 }
 
@@ -126,14 +126,20 @@ h1 {
 
 
 figure img{
-    width: 200px;
+    width: 400px;
 }
 
+figcaption {
+  font-size: 15px;
+}
 
 h1 {
     font-size: 3rem;
 }
 
+h2 {
+  font-size: 2rem;
+}
 
 /* BEGIN BUTTON STYLING */
 .btn {
