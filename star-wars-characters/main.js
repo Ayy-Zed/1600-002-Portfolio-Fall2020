@@ -3,10 +3,14 @@ import { people } from '../data/people.js'
 // CONNECT TO HTML PAGE
 const mainContent = document.querySelector('main')
 
+
+
 // BEGIN CREATING MAIN HEADER FOR PAGE
 const mainHeader = document.createElement('header')
 mainHeader.className = 'mainHeader'
 document.body.insertBefore(mainHeader, mainContent)
+
+
 
 // BEGIN CREATING BUTTONS FOR FILTERING
 const maleButton = document.createElement('button')
@@ -23,38 +27,76 @@ mainHeader.appendChild(otherButton)
 
 
 
-// PULLS THE MALES FROM THE PEOPLE LIST
+// PULLS THE GENDERS FROM THE PEOPLE LIST
 const maleCharacters = people.filter( person => person.gender === 'male');
 
+const femaleCharacters = people.filter( person => person.gender === 'female')
 
-// BEGIN FUNCTION THAT PULLS MALES ON CLICK
-maleButton.addEventListener('click', () => {
-    maleCharacters.forEach(element => {
 
-    const charFigure = document.createElement('figure')
 
-    const charImg = document.createElement('img')
-    charImg.src = 'https://starwars-visualguide.com/assets/img/characters/' + element.img + '.jpg'
 
-    const charCaption = document.createElement('figcaption')
-    charCaption.textContent = element.name
 
-    charFigure.appendChild(charImg)
-    charFigure.appendChild(charCaption)
+// BEGIN FUNCTION THAT PULLS GENDERS ON CLICK
+maleButton.addEventListener('click', () => {populateDOM(maleCharacters)})
 
-    mainContent.appendChild(charFigure)
+femaleButton.addEventListener('click', () => {populateDOM(femaleCharacters)})
 
-    })
-})
 
-let theURL = "https://swapi.co/api/people/1/"
 
+
+//GRABS THE NUMBER TO THE CORRESPONDING PICTURE
 function getLastNumber(url) {
-    console.log(url)
+    let end = url.lastIndexOf('/')
+    let start = end - 2
+    if (url.charAt(start) === '/') {
+        start++
+    }
+
+    return url.slice(start, end)
 }
 
-getLastNumber(theURL);
+
+
+//CREATES IMAGE ELEMENT WITH CORRECT CAPTION AND IMAGE
+function populateDOM(characters) {
+    removeChildren(mainContent)
+    characters.forEach(element => {
+
+        const charFigure = document.createElement('figure')
+        let charNum = getLastNumber(element.url)
+    
+        const charImg = document.createElement('img')
+        charImg.src = 'https://starwars-visualguide.com/assets/img/characters/' + charNum + '.jpg'
+        charImg.addEventListener('error', () => charImg.hidden = true) //genius level)
+    
+        const charCaption = document.createElement('figcaption')
+        charCaption.textContent = element.name
+    
+        charFigure.appendChild(charImg)
+        charFigure.appendChild(charCaption)
+    
+        mainContent.appendChild(charFigure)
+    
+        })
+
+}
+
+
+//THIS FUNCTION REMOVES THE CHILDREN SO WE CAN REPOPULATE
+function removeChildren(container) {
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
+    }
+}
 
 
 
-`https://starwars-visualguide.com/assets/img/characters/1.jpg`
+
+
+
+
+
+
+
+/* TO COMMENT MULTIPLE LINES:
+    ALT + SHIFT A */
