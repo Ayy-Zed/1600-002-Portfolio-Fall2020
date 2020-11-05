@@ -1,8 +1,11 @@
 import { people } from '../data/people.js'
 
+
+
 // CONNECT TO HTML PAGE
 const mainContent = document.querySelector('main')
 
+populateDOM(people)
 
 
 // BEGIN CREATING MAIN HEADER FOR PAGE
@@ -30,8 +33,15 @@ mainHeader.appendChild(otherButton)
 // PULLS THE GENDERS FROM THE PEOPLE LIST
 const maleCharacters = people.filter( person => person.gender === 'male');
 
-const femaleCharacters = people.filter( person => person.gender === 'female')
+const femaleCharacters = people.filter( person => person.gender === 'female');
 
+const otherCharacters = people.filter( person => {
+    if (person.gender === 'n/a' || 
+        person.gender === 'none' ||
+        person.gender ==='hermaphrodite') {
+        return person
+    }
+})
 
 
 
@@ -41,6 +51,7 @@ maleButton.addEventListener('click', () => {populateDOM(maleCharacters)})
 
 femaleButton.addEventListener('click', () => {populateDOM(femaleCharacters)})
 
+otherButton.addEventListener('click', () => {populateDOM(otherCharacters)})
 
 
 
