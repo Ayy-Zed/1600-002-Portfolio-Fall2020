@@ -1,4 +1,5 @@
 import { people } from '../data/people.js'
+import { removeChildren,getLastNumber } from '../utils/index.js'
 
 
 
@@ -44,27 +45,12 @@ const otherCharacters = people.filter( person => {
 })
 
 
-
-
 // BEGIN FUNCTION THAT PULLS GENDERS ON CLICK
 maleButton.addEventListener('click', () => {populateDOM(maleCharacters)})
 
 femaleButton.addEventListener('click', () => {populateDOM(femaleCharacters)})
 
 otherButton.addEventListener('click', () => {populateDOM(otherCharacters)})
-
-
-
-//GRABS THE NUMBER TO THE CORRESPONDING PICTURE
-function getLastNumber(url) {
-    let end = url.lastIndexOf('/')
-    let start = end - 2
-    if (url.charAt(start) === '/') {
-        start++
-    }
-
-    return url.slice(start, end)
-}
 
 
 
@@ -91,15 +77,6 @@ function populateDOM(characters) {
         })
 
 }
-
-
-//THIS FUNCTION REMOVES THE CHILDREN SO WE CAN REPOPULATE
-function removeChildren(container) {
-    while (container.firstChild) {
-        container.removeChild(container.firstChild);
-    }
-}
-
 
 
 
