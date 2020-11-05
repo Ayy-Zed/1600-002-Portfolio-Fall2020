@@ -9,6 +9,10 @@ main {
     justify-content: center;
 }
 
+body {
+    background-color: darkblue;
+}
+
 figure {
     margin: 1rem; 
 }
@@ -16,4 +20,18 @@ figure {
 figcaption {
    text-align: center;
    background-color: sienna;
+}
+
+h1{
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    color: white;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
