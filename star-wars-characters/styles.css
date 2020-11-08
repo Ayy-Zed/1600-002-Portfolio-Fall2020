@@ -31,10 +31,38 @@ body {
     background-color: darkblue;
 }
 
-footer {
+h1, footer {
     display: flex;
     justify-content: center;
     color: white;
     margin-top: 15px;
     margin-bottom: 15px;
+}
+
+button {
+    color: white;
+    background-color: black;
+    border-radius: 10px;
+    width: 150px;
+    height: 40px;
+    font-size: 1rem;
+    box-shadow: gray 2px 2px 2px 3px;
+}
+
+button hover{
+    color: blue;
+    background-color: black;
+}
+
+.nav {
+    padding: 25px;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+   
+}
+
+.navList {
+    margin: 10px;
+    padding: 10px;
 }

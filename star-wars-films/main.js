@@ -1,4 +1,5 @@
 import { films } from '../data/films.js'
+import { removeChildren,getLastNumber, getRandomPosition, addStarField } from '../utils/index.js'
 
 const main = document.querySelector('main')
 
@@ -19,3 +20,5 @@ for (let i = 0; i < 7; i++) {
     main.appendChild(figure)
 }
 
+
+addStarField(document.querySelector('body'), 1000)

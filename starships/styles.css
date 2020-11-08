@@ -15,6 +15,7 @@ header, footer {
     display: flex;
     justify-content: center;
     font-size: larger;
+    color: white;
 }
 
 a {
