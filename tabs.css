@@ -1,0 +1,34 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+}
+
+.mainFrame {
+    height: 100vh;
+}
+
+.tabs {
+    background-color: black;
+    justify-content: center;
+    color: white;
+}
+
+.selection {
+    color: white;
+    size: 10rem;
+    justify-content: center;
+}
+
+.mainPageInfo {
+    display: flex;
+    justify-content: center;
+    color: white;
+    size: 500rem;
+    text-align: center;
+}

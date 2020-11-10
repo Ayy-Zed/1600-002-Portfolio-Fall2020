@@ -20,24 +20,6 @@ document.body.insertBefore(mainHeader, mainContent)
 
 
 
-// BEGIN NAVIGATION OF PAGES
- const filmsButton = document.createElement('button')
- filmsButton.textContent = "Films"
- nav.appendChild(filmsButton)
-
-
- const characterButton = document.createElement('button')
- characterButton.textContent = "Characters"
- nav.appendChild(characterButton)
-
- const starShipsButton = document.createElement('button')
- starShipsButton.textContent = "Star Ships"
- nav.appendChild(starShipsButton)
-
-
-
-
-
 // BEGIN CREATING BUTTONS FOR FILTERING
 const maleButton = document.createElement('button')
 maleButton.textContent =  "Male Characters"
@@ -90,7 +72,6 @@ otherButton.addEventListener('click', () => {populateDOM(otherCharacters)
 function populateDOM(characters) {
     removeChildren(mainContent)
     characters.forEach(element => {
-
         const charFigure = document.createElement('figure')
         let charNum = getLastNumber(element.url)
     
