@@ -26,3 +26,9 @@ a {
 li {
     list-style: none;
 }
+
+
+img {
+    position: relative;
+    z-index: 1;
+}
