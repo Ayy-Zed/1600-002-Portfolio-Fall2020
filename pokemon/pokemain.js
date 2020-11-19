@@ -1,4 +1,16 @@
 const pokeGrid = document.querySelector('.pokemonGrid')
+const loadButton = document.querySelector('.load')
+const newPokemonButton = document.querySelector('.reRoll')
+
+loadButton.addEventListener('click', () => {
+    loadPage()
+    loadButton.disabled=true
+})
+
+newPokemonButton.addEventListener('click', () => {
+    let pokeName = prompt("What is your new Pokemon name?")
+    let newPokemon = new Pokemon(pokeName)
+})
 
 // Reusable async function to fetch data from the provided url
 async function getAPIData(url) {
@@ -25,6 +37,7 @@ function loadPage(data) {
 }
 
 function populatePokeCard(singlePokemon) {
+
     let pokeScene = document.createElement('div')
     pokeScene.className = 'scene'
     let pokeCard = document.createElement('div')
@@ -34,24 +47,42 @@ function populatePokeCard(singlePokemon) {
         pokeCard.classList.toggle('is-flipped')
     })
 
-    let pokeFront = document.createElement('div')
-    let pokeBack=document.createElement('div')
-
-    let frontLabel = document.createElement('p')
-    frontLabel.textContent = singlePokemon.name
-    let frontImage = document.createElement('img')
-    frontImage.src = `../images/pokemon/${getImageFileName(singlePokemon)}.png`
-
-    let backLabel = document.createElement('p')
-    backLabel.textContent = `${singlePokemon.moves.length} moves`
-    pokeBack.appendChild(backLabel)
-
-    pokeFront.appendChild(frontImage)
-    pokeFront.appendChild(frontLabel)
-    pokeCard.appendChild(pokeFront)
-    pokeCard.appendChild(pokeBack)
+    pokeCard.appendChild(populateCardFront(singlePokemon))
+    pokeCard.appendChild(populateCardBack(singlePokemon))
     pokeScene.appendChild(pokeCard)
     pokeGrid.appendChild(pokeScene)
+}
+
+function populateCardBack(pokemon) {
+    let pokeBack=document.createElement('div')
+    pokeBack.className = 'card__face card__face--back'
+
+    let attackMoves = document.createElement('p')
+
+    attackMoves.textContent = `${pokemon.name} has ${pokemon.moves.length} moves and weighs ${pokemon.weight} pounds!`
+
+    attackMoves.addEventListener('click', () => getMovesDetails(pokemon.moves))
+    pokeBack.appendChild(attackMoves)
+
+
+    return pokeBack
+}
+
+function getMovesDetails(pokemonMoves) {
+    const movesUrl = pokemonMoves[0].move.url
+    return getAPIData(movesUrl).then((data) => data.type.name)
+    }
+
+function populateCardFront(pokemon) {
+    let pokeFront = document.createElement('div')
+    pokeFront.className = 'card__face card__face--front'
+    let frontLabel = document.createElement('p')
+    frontLabel.textContent = pokemon.name
+    let frontImage = document.createElement('img')
+    frontImage.src = `../images/pokemon/${getImageFileName(pokemon)}.png`
+    pokeFront.appendChild(frontImage)
+    pokeFront.appendChild(frontLabel)
+    return pokeFront
 }
 
 function getImageFileName(pokemon) {
@@ -59,8 +90,18 @@ function getImageFileName(pokemon) {
         return `00${pokemon.id}`
     } else if (pokemon.id > 9 && pokemon.id < 100) {
         return `0${pokemon.id}`
+    } else if (pokemon.id > 99 && pokemon.id < 810) {
+        return `${pokemon.id}`
     }
 }
 
 
-loadPage()
+function Pokemon(name, height, weight, abilities) {
+    this.name = name
+    this.height = height
+    this.weight = weight
+    this.abilities = abilities
+    this.id = 900
+}
+
+

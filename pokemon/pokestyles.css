@@ -5,6 +5,7 @@
 }
 
 header {
+    color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,6 +17,10 @@ header {
     justify-content: space-between;
 }
 
+body {
+  background: linear-gradient(#0a087c 10%, #7093df 70%);
+  background-repeat: repeat-x;
+}
 
 .scene {
     width: 200px;
@@ -28,11 +33,31 @@ header {
   .card {
     width: 100%;
     height: 100%;
-    transition: transform 1s;
+    transition: transform 1000ms;
     transform-style: preserve-3d;
     cursor: pointer;
     position: relative;
+    background: linear-gradient(#8f8df0 10%, #330b61 70%);
   }
+
+  .card__face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+  }
+
+  .card__face--front {
+    color: white;
+    text-align: center;
+  }
+  
+  .card__face--back {
+    color: white;
+    text-align: center;
+    transform: rotateY(180deg);
+  }
+  
 
   .card.is-flipped {
     transform: rotateY(180deg);
