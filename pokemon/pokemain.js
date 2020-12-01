@@ -9,7 +9,14 @@ loadButton.addEventListener('click', () => {
 
 newPokemonButton.addEventListener('click', () => {
     let pokeName = prompt("What is your new Pokemon name?")
-    let newPokemon = new Pokemon(pokeName)
+    let newPokemon = new Pokemon(
+        pokeName,
+        400,
+        200,
+        ['gorge', 'sleep', 'cough'],
+        ['eat', 'study', 'code'])
+        populatePokeCard(newPokemon)
+
 })
 
 // Reusable async function to fetch data from the provided url
@@ -69,9 +76,15 @@ function populateCardBack(pokemon) {
 }
 
 function getMovesDetails(pokemonMoves) {
-    const movesUrl = pokemonMoves[0].move.url
-    return getAPIData(movesUrl).then((data) => data.type.name)
-    }
+    const nonNullMoves = pokemonMoves.filter(async (move) => {
+        if(!move.move.url) return
+        const moveData = await getAPIData(move.move.url)
+        console.log(moveData.accuracy, moveData.power)
+        if ((moveData.accuracy && moveData.power) !== null) {
+            console.log(moveData)
+        }
+     })
+     console.log(nonNullMoves.length)
 
 function populateCardFront(pokemon) {
     let pokeFront = document.createElement('div')
@@ -96,12 +109,13 @@ function getImageFileName(pokemon) {
 }
 
 
-function Pokemon(name, height, weight, abilities) {
+function Pokemon(name, height, weight, abilities, moves) {
     this.name = name
     this.height = height
     this.weight = weight
     this.abilities = abilities
     this.id = 900
+    this.moves = moves
 }
 
-
+}
