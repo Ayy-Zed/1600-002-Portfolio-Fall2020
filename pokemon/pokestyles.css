@@ -25,7 +25,7 @@ body {
 .scene {
     width: 200px;
     height: 260px;
-    border: 1px solid #CCC;
+    border: 3px solid yellow;
     perspective: 600px;
     margin: 30px;
   }
@@ -50,6 +50,7 @@ body {
   .card__face--front {
     color: white;
     text-align: center;
+    font-size: xx-large
   }
   
   .card__face--back {
@@ -61,4 +62,17 @@ body {
 
   .card.is-flipped {
     transform: rotateY(180deg);
+  }
+
+  img {
+    border: 3px solid yellow;
+    margin: 5px;
+  }
+
+  p:first-letter {
+    text-transform: capitalize;
+  }
+
+  p {
+    font-family: fantasy;
   }

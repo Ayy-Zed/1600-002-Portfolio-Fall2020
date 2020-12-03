@@ -2,23 +2,6 @@ const pokeGrid = document.querySelector('.pokemonGrid')
 const loadButton = document.querySelector('.load')
 const newPokemonButton = document.querySelector('.reRoll')
 
-loadButton.addEventListener('click', () => {
-    loadPage()
-    loadButton.disabled=true
-})
-
-newPokemonButton.addEventListener('click', () => {
-    let pokeName = prompt("What is your new Pokemon name?")
-    let newPokemon = new Pokemon(
-        pokeName,
-        400,
-        200,
-        ['gorge', 'sleep', 'cough'],
-        ['eat', 'study', 'code'])
-        populatePokeCard(newPokemon)
-
-})
-
 // Reusable async function to fetch data from the provided url
 async function getAPIData(url) {
     try {
@@ -42,6 +25,25 @@ function loadPage(data) {
             }
         })
 }
+
+
+loadButton.addEventListener('click', () => {
+    loadPage()
+    loadButton.disabled=true
+})
+
+newPokemonButton.addEventListener('click', () => {
+    let pokeName = prompt("What is your new Pokemon name?")
+    let newPokemon = new Pokemon(
+        pokeName,
+        400,
+        200,
+        ['gorge', 'sleep', 'cough'],
+        ['eat', 'study', 'code'])
+        populatePokeCard(newPokemon)
+
+})
+
 
 function populatePokeCard(singlePokemon) {
 
@@ -85,6 +87,7 @@ function getMovesDetails(pokemonMoves) {
         }
      })
      console.log(nonNullMoves.length)
+    }
 
 function populateCardFront(pokemon) {
     let pokeFront = document.createElement('div')
@@ -106,6 +109,8 @@ function getImageFileName(pokemon) {
     } else if (pokemon.id > 99 && pokemon.id < 810) {
         return `${pokemon.id}`
     }
+
+    return `pokeball`
 }
 
 
@@ -118,4 +123,3 @@ function Pokemon(name, height, weight, abilities, moves) {
     this.moves = moves
 }
 
-}
