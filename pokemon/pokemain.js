@@ -38,8 +38,8 @@ newPokemonButton.addEventListener('click', () => {
         pokeName,
         400,
         200,
-        ['gorge', 'sleep', 'cough'],
-        ['eat', 'study', 'code'])
+        ['fly', 'skate', 'eat'],
+        ['gam', 'study', 'code'])
         populatePokeCard(newPokemon)
 
 })

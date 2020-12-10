@@ -55,7 +55,10 @@ body {
   
   .card__face--back {
     color: white;
+    display: flex;
+    align-items: center;
     text-align: center;
+    font-size: xx-large;
     transform: rotateY(180deg);
   }
   
