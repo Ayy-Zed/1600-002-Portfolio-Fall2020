@@ -52,14 +52,27 @@ body {
     text-align: center;
     font-size: xx-large
   }
+
+  .card__face--front img{
+    border: 3px solid yellow;
+    margin: 5px;
+  }
   
   .card__face--back {
+    position: relative;
+    top: 25px;
     color: white;
-    display: flex;
     align-items: center;
     text-align: center;
     font-size: xx-large;
     transform: rotateY(180deg);
+  }
+
+  .card__face--back img{
+    position: absolute;
+    left: 1px;
+    opacity: .4;
+    z-index: -1;
   }
   
 
@@ -67,10 +80,6 @@ body {
     transform: rotateY(180deg);
   }
 
-  img {
-    border: 3px solid yellow;
-    margin: 5px;
-  }
 
   p:first-letter {
     text-transform: capitalize;

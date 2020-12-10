@@ -34,12 +34,12 @@ loadButton.addEventListener('click', () => {
 
 newPokemonButton.addEventListener('click', () => {
     let pokeName = prompt("What is your new Pokemon name?")
+    let pokeWeight = prompt("How much does your Pokemon weigh?")
+    let pokeMoves = 10
     let newPokemon = new Pokemon(
         pokeName,
-        400,
-        200,
-        ['fly', 'skate', 'eat'],
-        ['gam', 'study', 'code'])
+        pokeWeight +'lbs',
+        pokeMoves)
         populatePokeCard(newPokemon)
 
 })
@@ -70,7 +70,10 @@ function populateCardBack(pokemon) {
 
     attackMoves.textContent = `${pokemon.name} has ${pokemon.moves.length} moves and weighs ${pokemon.weight} pounds!`
 
-    attackMoves.addEventListener('click', () => getMovesDetails(pokemon.moves))
+    let backImage = document.createElement('img')
+    backImage.src = "../images/pokemon/ash.png"
+    pokeBack.appendChild(backImage)
+
     pokeBack.appendChild(attackMoves)
 
 
@@ -81,12 +84,10 @@ function getMovesDetails(pokemonMoves) {
     const nonNullMoves = pokemonMoves.filter(async (move) => {
         if(!move.move.url) return
         const moveData = await getAPIData(move.move.url)
-        console.log(moveData.accuracy, moveData.power)
         if ((moveData.accuracy && moveData.power) !== null) {
             console.log(moveData)
         }
      })
-     console.log(nonNullMoves.length)
     }
 
 function populateCardFront(pokemon) {
@@ -114,12 +115,10 @@ function getImageFileName(pokemon) {
 }
 
 
-function Pokemon(name, height, weight, abilities, moves) {
+function Pokemon(name, weight, moves) {
     this.name = name
-    this.height = height
     this.weight = weight
-    this.abilities = abilities
+    this.moves = "900"
     this.id = 900
-    this.moves = moves
 }
 
